@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 156 38% 97%;
+    --foreground: 194 44% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 194 44% 13%;
+    --primary: 193 53% 22%;
+    --primary-foreground: 167 53% 97%;
+    --secondary: 160 36% 95%;
+    --secondary-foreground: 194 44% 13%;
+    --muted: 160 36% 95%;
+    --muted-foreground: 192 13% 39%;
+    --accent: 188 52% 36%;
+    --accent-foreground: 167 53% 97%;
+    --border: 169 22% 86%;
+    --input: 169 22% 86%;
+    --ring: 188 52% 36%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 194 37% 7%;
+    --foreground: 160 36% 95%;
+    --card: 197 40% 10%;
+    --card-foreground: 160 36% 95%;
+    --primary: 195 47% 60%;
+    --primary-foreground: 194 37% 7%;
+    --secondary: 196 33% 14%;
+    --secondary-foreground: 160 36% 95%;
+    --muted: 196 33% 14%;
+    --muted-foreground: 189 16% 67%;
+    --accent: 195 47% 60%;
+    --accent-foreground: 194 37% 7%;
+    --border: 195 29% 19%;
+    --input: 195 29% 19%;
+    --ring: 195 47% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    @apply bg-accent/40;
+  }
+}
+
+@layer components {
+  .container-store {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .pill-nav {
+    @apply inline-flex items-center gap-1 rounded-full border border-border/60 bg-card/70 p-1 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-card/60;
+  }
+
+  .pill-link {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-foreground/75 transition hover:bg-foreground/5 hover:text-foreground;
+  }
+
+  .pill-link-active {
+    @apply bg-primary text-primary-foreground shadow-sm hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition hover:bg-foreground/5 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition hover:bg-foreground/5;
+  }
+
+  .card-soft {
+    @apply rounded-3xl border border-border/70 bg-card shadow-sm;
+  }
+
+  .input-base {
+    @apply w-full rounded-2xl border border-input bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-ring/40;
+  }
+
+  .label-base {
+    @apply mb-1.5 block text-sm font-medium text-foreground/80;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold tracking-tight sm:text-3xl;
+  }
+
+  .section-sub {
+    @apply mt-1.5 text-sm text-muted-foreground sm:text-base;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold;
+  }
+
+  .book-cover {
+    @apply relative overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-border/60;
+  }
+
+  .book-cover img {
+    @apply transition duration-500 group-hover:scale-[1.04];
+  }
+
+  .divider {
+    @apply h-px w-full bg-border/70;
+  }
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(1100px 520px at 15% -10%, hsl(193 60% 45% / 0.16), transparent 60%),
+    radial-gradient(900px 480px at 92% 5%, hsl(195 55% 60% / 0.16), transparent 60%),
+    linear-gradient(to bottom, hsl(156 38% 97%), hsl(160 40% 100%));
+}
+
+.dark .hero-gradient {
+  background:
+    radial-gradient(1100px 520px at 15% -10%, hsl(193 60% 45% / 0.20), transparent 60%),
+    radial-gradient(900px 480px at 92% 5%, hsl(195 55% 60% / 0.14), transparent 60%),
+    linear-gradient(to bottom, hsl(194 37% 7%), hsl(194 40% 5%));
+}
+
+.glass {
+  backdrop-filter: blur(14px);
+  background: hsl(0 0% 100% / 0.72);
+}
+
+.dark .glass {
+  background: hsl(197 40% 10% / 0.72);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-in {
+  animation: page-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-in {
+    animation: none;
+  }
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+/* ---- Scroll-reveal entrance ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Children appear one after another (opacity only, so hover transitions stay intact) */
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  animation: reveal-fade 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.reveal-stagger.is-visible > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.reveal-stagger.is-visible > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.reveal-stagger.is-visible > *:nth-child(4) {
+  animation-delay: 0.22s;
+}
+.reveal-stagger.is-visible > *:nth-child(5) {
+  animation-delay: 0.28s;
+}
+.reveal-stagger.is-visible > *:nth-child(6) {
+  animation-delay: 0.34s;
+}
+.reveal-stagger.is-visible > *:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.reveal-stagger.is-visible > *:nth-child(n + 8) {
+  animation-delay: 0.46s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (scripting: none) {
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
